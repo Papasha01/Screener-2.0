@@ -679,3 +679,695 @@ dt_resend    2022-06-24 18:44:38.693019
 in_range                              1
 Name: 31, dtype: object 0.005535055350553542)
 2022-06-24 18:45:21.736 | ERROR    | __main__:polling:147 - Can only compare identically-labeled Series objects
+2022-06-24 23:51:11.232 | DEBUG    | __main__:<module>:19 - Start script
+2022-06-24 23:51:35.310 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-24 23:52:20.075 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:02:06.603 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:08:27.591 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:12:42.535 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:14:28.748 | DEBUG    | __main__:<module>:1 - Start script
+2022-06-25 00:15:55.754 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:17:38.319 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:19:40.193 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:27:30.342 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:27:54.993 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:28:24.161 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:35:18.565 | DEBUG    | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.49970000
+quantity                900054.30000000
+dt           2022-06-25 00:28:28.948068
+dt_resend    2022-06-25 00:28:28.948068
+in_range                              0
+Name: 35, dtype: object 0.0074044426655992535)
+2022-06-25 00:35:19.729 | DEBUG    | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.49960000
+quantity                737939.30000000
+dt           2022-06-25 00:28:28.950070
+dt_resend    2022-06-25 00:28:28.950070
+in_range                              0
+Name: 36, dtype: object 0.008006405124099336)
+2022-06-25 00:35:22.970 | DEBUG    | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.50080000
+quantity                760590.90000000
+dt           2022-06-25 00:28:28.922045
+dt_resend    2022-06-25 00:35:21.438472
+in_range                              1
+Name: 24, dtype: object 0.005591054313099031)
+2022-06-25 00:35:25.352 | DEBUG    | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.50060000
+quantity                741970.50000000
+dt           2022-06-25 00:28:28.926048
+dt_resend    2022-06-25 00:28:28.926048
+in_range                              0
+Name: 26, dtype: object 0.005393527766679895)
+2022-06-25 00:35:32.899 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:35:59.697 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:36:20.219 | DEBUG    | __main__:start_handler:157 - User №471485149 send I'm working)
+2022-06-25 00:36:23.155 | DEBUG    | __main__:start_handler:160 - User №471485149 added to the database)
+2022-06-25 00:36:34.945 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.49880000
+quantity                736676.80000000
+dt           2022-06-25 00:36:04.507439
+dt_resend    2022-06-25 00:36:34.580798
+in_range                              1
+Name: 29, dtype: object 0.005613472333600766)
+2022-06-25 00:36:35.109 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.49870000
+quantity                903112.60000000
+dt           2022-06-25 00:36:04.509440
+dt_resend    2022-06-25 00:36:04.509440
+in_range                              0
+Name: 30, dtype: object 0.005815119310206729)
+2022-06-25 00:36:35.674 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50500000
+quantity                759385.50000000
+dt           2022-06-25 00:36:04.866765
+dt_resend    2022-06-25 00:36:04.866765
+in_range                              0
+Name: 180, dtype: object 0.006732673267326628)
+2022-06-25 00:36:53.537 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:38:17.278 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:38:35.329 | DEBUG    | __main__:start_handler:157 - User №471485149 send I'm working)
+2022-06-25 00:38:37.488 | DEBUG    | __main__:start_handler:166 - User №471485149 send No records)
+2022-06-25 00:41:32.008 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:41:43.747 | DEBUG    | __main__:start_handler:157 - User №471485149 send I'm working)
+2022-06-25 00:41:45.875 | DEBUG    | __main__:start_handler:166 - User №471485149 send No records)
+2022-06-25 00:42:06.827 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.49960000
+quantity                901945.10000000
+dt           2022-06-25 00:41:35.850071
+dt_resend    2022-06-25 00:42:06.498248
+in_range                              1
+Name: 32, dtype: object 0.006605284227382047)
+2022-06-25 00:42:06.982 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.49930000
+quantity                736063.90000000
+dt           2022-06-25 00:41:35.859093
+dt_resend    2022-06-25 00:41:35.859093
+in_range                              0
+Name: 35, dtype: object 0.007210094131784528)
+2022-06-25 00:42:07.507 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50500000
+quantity               1235771.20000000
+dt           2022-06-25 00:41:36.187379
+dt_resend    2022-06-25 00:41:36.187379
+in_range                              0
+Name: 170, dtype: object 0.004158415841584162)
+2022-06-25 00:42:12.762 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:42:49.206 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:43:23.186 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50060000
+quantity               1196719.50000000
+dt           2022-06-25 00:42:52.658090
+dt_resend    2022-06-25 00:43:22.827474
+in_range                              1
+Name: 26, dtype: object 0.00579304834198946)
+2022-06-25 00:43:23.378 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.49960000
+quantity                901945.10000000
+dt           2022-06-25 00:42:52.679109
+dt_resend    2022-06-25 00:43:23.220007
+in_range                              1
+Name: 34, dtype: object 0.007806244995996803)
+2022-06-25 00:43:27.249 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50630000
+quantity                746112.10000000
+dt           2022-06-25 00:42:53.055451
+dt_resend    2022-06-25 00:43:27.116273
+in_range                              1
+Name: 180, dtype: object 0.005530317993284628)
+2022-06-25 00:44:34.042 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:45:09.384 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50260000
+quantity                900142.50000000
+dt           2022-06-25 00:44:38.627050
+dt_resend    2022-06-25 00:45:08.933889
+in_range                              1
+Name: 28, dtype: object 0.007361719060883232)
+2022-06-25 00:45:09.622 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50210000
+quantity                736386.30000000
+dt           2022-06-25 00:44:38.640063
+dt_resend    2022-06-25 00:45:09.400107
+in_range                              1
+Name: 33, dtype: object 0.008364867556263755)
+2022-06-25 00:45:10.190 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50880000
+quantity                760512.80000000
+dt           2022-06-25 00:44:39.009407
+dt_resend    2022-06-25 00:45:10.050364
+in_range                              1
+Name: 183, dtype: object 0.004913522012578775)
+2022-06-25 00:45:10.361 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.51000000
+quantity                615398.50000000
+dt           2022-06-25 00:44:39.038434
+dt_resend    2022-06-25 00:45:10.229646
+in_range                              1
+Name: 195, dtype: object 0.007254901960784377)
+2022-06-25 00:45:14.555 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:45:44.831 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:48:27.800 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.51000000
+quantity                599582.10000000
+dt           2022-06-25 00:44:39.038434
+dt_resend    2022-06-25 00:45:10.229646
+in_range                              0
+Name: 195, dtype: object 0.009411764705882453)
+2022-06-25 00:48:30.574 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50170000
+quantity                971020.30000000
+dt           2022-06-25 00:44:38.651072
+dt_resend    2022-06-25 00:48:28.735668
+in_range                              1
+Name: 37, dtype: object 0.007175602949969884)
+2022-06-25 00:48:31.134 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:48:34.451 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50750000
+quantity                788129.20000000
+dt           2022-06-25 00:44:38.978378
+dt_resend    2022-06-25 00:44:38.978378
+in_range                              0
+Name: 170, dtype: object 0.00532019704433484)
+2022-06-25 00:51:06.445 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:51:07.888 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.51000000
+quantity                819369.30000000
+dt           2022-06-25 00:44:39.038434
+dt_resend    2022-06-25 00:51:06.381711
+in_range                              1
+Name: 195, dtype: object 0.008039215686274526)
+2022-06-25 00:51:10.026 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50330000
+quantity                768927.70000000
+dt           2022-06-25 00:44:38.611035
+dt_resend    2022-06-25 00:51:08.719853
+in_range                              1
+Name: 21, dtype: object 0.004967216371945193)
+2022-06-25 00:51:11.360 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50260000
+quantity                900053.50000000
+dt           2022-06-25 00:44:38.627050
+dt_resend    2022-06-25 00:45:08.933889
+in_range                              0
+Name: 28, dtype: object 0.005769996020692281)
+2022-06-25 00:51:23.607 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:51:59.235 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50240000
+quantity               1184816.10000000
+dt           2022-06-25 00:51:28.573025
+dt_resend    2022-06-25 00:51:58.851895
+in_range                              1
+Name: 23, dtype: object 0.00398089171974525)
+2022-06-25 00:51:59.443 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50130000
+quantity                900615.20000000
+dt           2022-06-25 00:51:28.606055
+dt_resend    2022-06-25 00:51:59.274018
+in_range                              1
+Name: 34, dtype: object 0.0061839218033112875)
+2022-06-25 00:52:00.108 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50840000
+quantity                776064.50000000
+dt           2022-06-25 00:51:28.966383
+dt_resend    2022-06-25 00:51:28.966383
+in_range                              0
+Name: 186, dtype: object 0.007671125098347775)
+2022-06-25 00:52:08.598 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:52:08.604 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50720000
+quantity                758764.10000000
+dt           2022-06-25 00:51:28.935354
+dt_resend    2022-06-25 00:52:05.180717
+in_range                              1
+Name: 174, dtype: object 0.005323343848580464)
+2022-06-25 00:52:36.901 | ERROR    | __main__:polling:149 - Can only compare identically-labeled Series objects
+2022-06-25 00:53:17.150 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:53:30.927 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:53:42.305 | DEBUG    | __main__:start_handler:167 - User №471485149 send No records)
+2022-06-25 00:54:05.914 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50140000
+quantity                744072.60000000
+dt           2022-06-25 00:53:34.868046
+dt_resend    2022-06-25 00:54:05.501244
+in_range                              1
+Name: 30, dtype: object 0.005983246908655815)
+2022-06-25 00:54:06.044 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50130000
+quantity                903064.20000000
+dt           2022-06-25 00:53:34.870048
+dt_resend    2022-06-25 00:54:05.919217
+in_range                              1
+Name: 31, dtype: object 0.0061839218033112875)
+2022-06-25 00:54:06.664 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50720000
+quantity                758764.10000000
+dt           2022-06-25 00:53:35.231375
+dt_resend    2022-06-25 00:54:06.477719
+in_range                              1
+Name: 177, dtype: object 0.0055205047318612754)
+2022-06-25 00:54:15.808 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:23.713 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:24.920 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:37.061 | DEBUG    | __main__:start_handler:157 - User №471485149 send I'm working)
+2022-06-25 00:54:43.645 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:44.559 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:45.387 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:54.191 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:55.084 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:54:55.831 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:55:13.775 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:55:37.960 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:56:37.917 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50140000
+quantity                736287.80000000
+dt           2022-06-25 00:56:06.558028
+dt_resend    2022-06-25 00:56:36.771426
+in_range                              1
+Name: 20, dtype: object 0.004188272836058937)
+2022-06-25 00:56:38.130 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50010000
+quantity                900000.00000000
+dt           2022-06-25 00:56:06.589056
+dt_resend    2022-06-25 00:56:06.589056
+in_range                              0
+Name: 32, dtype: object 0.006798640271945544)
+2022-06-25 00:57:27.646 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 00:58:03.947 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50140000
+quantity                736287.80000000
+dt           2022-06-25 00:57:32.666034
+dt_resend    2022-06-25 00:58:03.317601
+in_range                              1
+Name: 24, dtype: object 0.004188272836058937)
+2022-06-25 00:58:04.144 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50010000
+quantity                900907.60000000
+dt           2022-06-25 00:57:32.697062
+dt_resend    2022-06-25 00:58:03.991990
+in_range                              1
+Name: 37, dtype: object 0.006798640271945544)
+2022-06-25 00:58:04.723 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50720000
+quantity                792236.20000000
+dt           2022-06-25 00:57:33.048951
+dt_resend    2022-06-25 00:58:04.564391
+in_range                              1
+Name: 182, dtype: object -0.007294952681388134)
+2022-06-25 00:58:43.438 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:58:44.245 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:58:45.392 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:04.115 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50050000
+quantity                736125.00000000
+dt           2022-06-25 00:57:32.687052
+dt_resend    2022-06-25 00:59:03.967481
+in_range                              1
+Name: 33, dtype: object 0.005594405594405716)
+2022-06-25 00:59:07.124 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:07.652 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:08.177 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:14.607 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50570000
+quantity               1180376.00000000
+dt           2022-06-25 00:57:33.014920
+dt_resend    2022-06-25 00:59:14.187690
+in_range                              1
+Name: 168, dtype: object -0.005339133873838331)
+2022-06-25 00:59:33.442 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:34.342 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:34.952 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:56.266 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:57.269 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 00:59:57.837 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:01:14.390 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:02:08.444 | ERROR    | __main__:check_old_data:136 - HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=15)
+2022-06-25 01:02:20.953 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50010000
+quantity                916786.20000000
+dt           2022-06-25 01:01:22.138551
+dt_resend    2022-06-25 01:02:18.551057
+in_range                              1
+Name: 36, dtype: object -0.008798240351929554)
+2022-06-25 01:02:22.115 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50650000
+quantity                738279.70000000
+dt           2022-06-25 01:01:22.485866
+dt_resend    2022-06-25 01:01:22.485866
+in_range                              0
+Name: 176, dtype: object 0.003553800592299927)
+2022-06-25 01:02:31.926 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50240000
+quantity                744405.80000000
+dt           2022-06-25 01:01:22.080498
+dt_resend    2022-06-25 01:02:31.419382
+in_range                              1
+Name: 13, dtype: object -0.005971337579617764)
+2022-06-25 01:02:32.090 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50210000
+quantity               1346193.00000000
+dt           2022-06-25 01:01:22.088505
+dt_resend    2022-06-25 01:01:22.088505
+in_range                              0
+Name: 16, dtype: object -0.007369049990041843)
+2022-06-25 01:03:14.540 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50380000
+quantity                759876.60000000
+dt           2022-06-25 01:01:22.423809
+dt_resend    2022-06-25 01:03:14.326393
+in_range                              1
+Name: 150, dtype: object -0.0055577610162762525)
+2022-06-25 01:03:20.804 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:03:20.833 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:03:20.848 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:03:22.135 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50900000
+quantity                765381.80000000
+dt           2022-06-25 01:01:22.544919
+dt_resend    2022-06-25 01:03:20.325059
+in_range                              1
+Name: 201, dtype: object 0.005304518664047242)
+2022-06-25 01:03:26.937 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:03:27.867 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:03:28.391 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:04:02.833 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:04:03.406 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:04:04.005 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:04:51.529 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50990000
+quantity                845777.30000000
+dt           2022-06-25 01:01:22.566939
+dt_resend    2022-06-25 01:04:50.804323
+in_range                              1
+Name: 210, dtype: object 0.005099039027260388)
+2022-06-25 01:05:01.481 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50430000
+quantity                900022.20000000
+dt           2022-06-25 01:01:22.435820
+dt_resend    2022-06-25 01:04:59.913654
+in_range                              1
+Name: 155, dtype: object -0.006742018639698699)
+2022-06-25 01:05:31.916 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50540000
+quantity                762236.90000000
+dt           2022-06-25 01:01:22.461844
+dt_resend    2022-06-25 01:01:22.461844
+in_range                              0
+Name: 166, dtype: object -0.005540166204986097)
+2022-06-25 01:05:52.771 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.51080000
+quantity                742780.80000000
+dt           2022-06-25 01:01:22.587959
+dt_resend    2022-06-25 01:05:52.629101
+in_range                              1
+Name: 219, dtype: object 0.00509005481597502)
+2022-06-25 01:11:13.356 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:13:01.153 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:13:20.191 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:14:32.225 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:15:23.563 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:19:17.163 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:19:49.190 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:22:09.912 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:23:16.555 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:24:25.310 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:25:22.347 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:25:58.127 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50420000
+quantity                737036.60000000
+dt           2022-06-25 01:25:27.154111
+dt_resend    2022-06-25 01:25:57.684396
+in_range                              1
+Name: 25, dtype: object -0.004363347877826218)
+2022-06-25 01:25:58.315 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50290000
+quantity                900185.70000000
+dt           2022-06-25 01:25:27.185139
+dt_resend    2022-06-25 01:25:58.162773
+in_range                              1
+Name: 38, dtype: object -0.0069596341220916624)
+2022-06-25 01:25:58.875 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50990000
+quantity                771875.20000000
+dt           2022-06-25 01:25:27.557593
+dt_resend    2022-06-25 01:25:58.748317
+in_range                              1
+Name: 178, dtype: object 0.0068640909982350395)
+2022-06-25 01:26:05.972 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50350000
+quantity                754493.30000000
+dt           2022-06-25 01:25:27.171126
+dt_resend    2022-06-25 01:26:05.842798
+in_range                              1
+Name: 32, dtype: object -0.005163853028798515)
+2022-06-25 01:26:18.333 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:26:19.285 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:26:20.172 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:26:47.560 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:26:48.646 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:26:53.094 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50150000
+quantity                923622.30000000
+dt           2022-06-25 01:25:27.225176
+dt_resend    2022-06-25 01:26:52.894565
+in_range                              1
+Name: 52, dtype: object -0.007178464606181656)
+2022-06-25 01:27:01.307 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:02.474 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:06.381 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50210000
+quantity                741590.80000000
+dt           2022-06-25 01:25:27.212163
+dt_resend    2022-06-25 01:27:06.226070
+in_range                              1
+Name: 46, dtype: object -0.0053774148575982395)
+2022-06-25 01:27:17.373 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:18.287 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:22.035 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50780000
+quantity                735994.20000000
+dt           2022-06-25 01:27:10.086212
+dt_resend    2022-06-25 01:27:21.884839
+in_range                              1
+Name: 160, dtype: object 0.0055139818826309694)
+2022-06-25 01:27:32.869 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:33.811 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:34.606 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:46.562 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:47.432 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:27:48.161 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:28:19.011 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:28:19.674 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:28:20.886 | DEBUG    | __main__:start_handler:175 - User №471485149 send all_verified_record
+2022-06-25 01:29:08.117 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50860000
+quantity                735994.20000000
+dt           2022-06-25 01:28:46.836751
+dt_resend    2022-06-25 01:29:07.917953
+in_range                              1
+Name: 319, dtype: object 0.005308690523004422)
+2022-06-25 01:29:26.476 | DEBUG    | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50320000
+quantity                746932.80000000
+dt           2022-06-25 01:27:59.273416
+dt_resend    2022-06-25 01:29:26.361851
+in_range                              1
+Name: 35, dtype: object -0.005365659777424536)
+2022-06-25 01:31:16.044 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:31:21.204 | ERROR    | __main__:check_old_data:136 - '<' not supported between instances of 'datetime.timedelta' and 'Timestamp'
+2022-06-25 01:33:28.327 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:33:36.700 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:34:12.036 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50290000
+quantity                784212.30000000
+dt           2022-06-25 01:33:40.675037
+dt_resend    2022-06-25 01:34:11.589101
+in_range                              1
+Name: 25, dtype: object -0.006561940743686545)
+2022-06-25 01:34:12.200 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50190000
+quantity                901409.00000000
+dt           2022-06-25 01:33:40.699059
+dt_resend    2022-06-25 01:34:12.068020
+in_range                              1
+Name: 35, dtype: object -0.00856744371388718)
+2022-06-25 01:35:09.061 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50880000
+quantity                744890.30000000
+dt           2022-06-25 01:34:17.248733
+dt_resend    2022-06-25 01:33:41.076403
+in_range                              0
+Name: 182, dtype: object 0.005306603773584939)
+2022-06-25 01:36:33.766 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50320000
+quantity                938519.20000000
+dt           2022-06-25 01:36:03.243008
+dt_resend    2022-06-25 01:36:33.625480
+in_range                              1
+Name: 22, dtype: object -0.006955484896661535)
+2022-06-25 01:36:55.974 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50400000
+quantity                743746.10000000
+dt           2022-06-25 01:36:25.070471
+dt_resend    2022-06-25 01:36:55.826113
+in_range                              1
+Name: 14, dtype: object -0.005357142857142838)
+2022-06-25 01:36:58.566 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50960000
+quantity                737941.30000000
+dt           2022-06-25 01:33:41.093419
+dt_resend    2022-06-25 01:36:58.410189
+in_range                              1
+Name: 189, dtype: object 0.005494505494505586)
+2022-06-25 01:38:02.718 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.51050000
+quantity                744641.00000000
+dt           2022-06-25 01:33:41.114437
+dt_resend    2022-06-25 01:38:02.574242
+in_range                              1
+Name: 198, dtype: object 0.005093046033300519)
+2022-06-25 01:38:31.407 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50940000
+quantity               1184456.20000000
+dt           2022-06-25 01:33:58.008893
+dt_resend    2022-06-25 01:38:31.217402
+in_range                              1
+Name: 187, dtype: object 0.005300353356890275)
+2022-06-25 01:38:43.238 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50310000
+quantity                736466.90000000
+dt           2022-06-25 01:36:20.290121
+dt_resend    2022-06-25 01:38:43.032493
+in_range                              1
+Name: 23, dtype: object -0.0051679586563309066)
+2022-06-25 01:38:44.623 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50200000
+quantity                911885.50000000
+dt           2022-06-25 01:35:54.858806
+dt_resend    2022-06-25 01:38:44.437338
+in_range                              1
+Name: 34, dtype: object -0.007171314741035939)
+2022-06-25 01:48:40.407 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:49:16.411 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50850000
+quantity               1083557.20000000
+dt           2022-06-25 01:48:45.198401
+dt_resend    2022-06-25 01:49:15.999417
+in_range                              1
+Name: 180, dtype: object 0.006882989183874089)
+2022-06-25 01:49:34.395 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50250000
+quantity                742557.80000000
+dt           2022-06-25 01:49:04.037569
+dt_resend    2022-06-25 01:49:34.124334
+in_range                              1
+Name: 29, dtype: object -0.004577114427860796)
+2022-06-25 01:49:35.496 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50140000
+quantity                900109.80000000
+dt           2022-06-25 01:49:05.063503
+dt_resend    2022-06-25 01:49:35.348898
+in_range                              1
+Name: 40, dtype: object -0.006581571599521441)
+2022-06-25 01:50:27.723 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50730000
+quantity                737438.60000000
+dt           2022-06-25 01:49:56.966673
+dt_resend    2022-06-25 01:50:27.554044
+in_range                              1
+Name: 168, dtype: object 0.005519416518825149)
+2022-06-25 01:50:45.505 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50150000
+quantity                762053.80000000
+dt           2022-06-25 01:50:15.106442
+dt_resend    2022-06-25 01:50:45.380373
+in_range                              1
+Name: 39, dtype: object -0.0063808574277171015)
+2022-06-25 01:55:24.508 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50050000
+quantity                769699.40000000
+dt           2022-06-25 01:54:52.962811
+dt_resend    2022-06-25 01:55:24.360969
+in_range                              1
+Name: 49, dtype: object -0.004395604395604602)
+2022-06-25 01:55:33.543 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.49910000
+quantity                901219.50000000
+dt           2022-06-25 01:55:03.161300
+dt_resend    2022-06-25 01:55:33.408500
+in_range                              1
+Name: 63, dtype: object -0.007613704668403276)
+2022-06-25 01:55:44.135 | INFO     | __main__:check_old_data:132 - coin                            ADAUSDT
+price                        0.50530000
+quantity               1177665.70000000
+dt           2022-06-25 01:55:13.002104
+dt_resend    2022-06-25 01:55:43.956994
+in_range                              1
+Name: 1, dtype: object 0.0047496536710863735)
+2022-06-25 01:57:24.213 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:58:00.141 | INFO     | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.49900000
+quantity               1031641.60000000
+dt           2022-06-25 01:57:29.185058
+dt_resend    2022-06-25 01:57:59.776036
+in_range                              1
+Name: 33, dtype: object -0.007014028056112176)
+2022-06-25 01:58:00.776 | INFO     | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.50600000
+quantity                736695.10000000
+dt           2022-06-25 01:57:29.591427
+dt_resend    2022-06-25 01:58:00.632433
+in_range                              1
+Name: 185, dtype: object 0.006916996047430901)
+2022-06-25 01:58:02.223 | INFO     | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.49980000
+quantity                736788.30000000
+dt           2022-06-25 01:57:31.731177
+dt_resend    2022-06-25 01:58:02.072199
+in_range                              1
+Name: 25, dtype: object -0.005402160864345529)
+2022-06-25 01:58:39.393 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 01:58:40.118 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 01:58:41.600 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 01:59:07.347 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 01:59:07.748 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 01:59:08.248 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 01:59:48.026 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 01:59:59.884 | DEBUG    | __main__:start_handler:169 - User №471485149 send No records)
+2022-06-25 02:00:23.217 | INFO     | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.49900000
+quantity                910369.10000000
+dt           2022-06-25 01:59:52.769053
+dt_resend    2022-06-25 02:00:22.865602
+in_range                              1
+Name: 27, dtype: object -0.006212424849699305)
+2022-06-25 02:00:26.005 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 02:00:28.722 | INFO     | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.49890000
+quantity                829557.30000000
+dt           2022-06-25 01:59:57.730350
+dt_resend    2022-06-25 02:00:28.527725
+in_range                              1
+Name: 28, dtype: object -0.006213670074163069)
+2022-06-25 02:00:35.624 | DEBUG    | __main__:start_handler:177 - User №471485149 send all_verified_record
+2022-06-25 02:01:16.246 | INFO     | __main__:check_old_data:134 - coin                            ADAUSDT
+price                        0.50480000
+quantity                750144.40000000
+dt           2022-06-25 02:00:44.985680
+dt_resend    2022-06-25 02:01:15.931966
+in_range                              1
+Name: 179, dtype: object 0.00574484944532494)
+2022-06-25 02:03:22.264 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:04:54.580 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:05:26.200 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:24:13.678 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:24:34.033 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:25:12.577 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:27:45.135 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:28:54.079 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:34:14.824 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:37:03.653 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:38:33.297 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:38:53.219 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:39:08.063 | DEBUG    | __main__:<module>:18 - Start script
+2022-06-25 02:44:01.120 | DEBUG    | __main__:<module>:18 - Start script
