@@ -15,7 +15,7 @@ import sys
 
 # Логирование
 logger.add("simple.log")
-logger.debug("Start script")
+logger.info("Start script")
 
 def import_cfg():
     '''
@@ -88,21 +88,21 @@ def get_depth_from_websocket():
     
     def check(ba):
         global data_depth, limit, cf_update
-        filter_depth = ((data_depth.coin == jsMessage['data']['s']) & (data_depth.price ==  ba[0]))
+        filter_depth_ws = ((data_depth.coin == jsMessage['data']['s']) & (data_depth.price ==  ba[0]))
         if float(ba[0]) * float(ba[1]) > limit:
-            if len(data_depth.loc[filter_depth]) != 0:
-                if float(ba[1]) > float(data_depth.loc[filter_depth]['quantity']) * cf_update:
-                    data_depth.quantity.where(~(filter_depth), other=ba[1], inplace=True)
+            if len(data_depth.loc[filter_depth_ws]) != 0:
+                if float(ba[1]) > float(data_depth.loc[filter_depth_ws]['quantity']) * cf_update:
+                    data_depth.loc[filter_depth_ws, 'quantity'] = ba[1]
                 else:
-                    data_depth.quantity.where(~(filter_depth), other=ba[1], inplace=True) 
-                    data_depth.dt.where(~(filter_depth), other=datetime.now(), inplace=True) 
+                    data_depth.loc[filter_depth_ws, 'quantity'] = ba[1] 
+                    data_depth.loc[filter_depth_ws, 'dt'] = datetime.now() 
             else:
                 frame_dict = {'coin': jsMessage['data']['s'], 'price': ba[0], 'quantity': ba[1], 'dt': datetime.now(), 'dt_resend': datetime.now(), 'in_range': 0}
                 frame = pd.DataFrame([frame_dict])
                 data_depth = pd.concat([data_depth, frame], ignore_index=True)
-        elif len(data_depth.loc[filter_depth]) != 0:
-            filter_depth = filter_depth
-            data_depth = data_depth.loc[filter_depth]
+        elif len(data_depth.loc[filter_depth_ws]) != 0:
+            filter_depth_ws = -filter_depth_ws
+            data_depth = data_depth.loc[filter_depth_ws]
 
     while True:
         oldest_data_from_stream_buffer = ubwa.pop_stream_data_from_stream_buffer()
@@ -116,7 +116,7 @@ def get_depth_from_websocket():
                         check(ask)
                 elif jsMessage['data']['e'] == 'aggTrade':
                     filter_agg = data_price.coin == jsMessage['data']['s']
-                    data_price.price.where(~(filter_agg), other=jsMessage['data']['p'], inplace=True) 
+                    data_price.loc[filter_agg, 'price'] = jsMessage['data']['p']
         else: 
             time.sleep(0.1)
             spinner_running.next()
@@ -129,17 +129,18 @@ def check_old_data():
     while True:
         try:
             for index, row in data_depth.iterrows():
-                filter_depth = ((data_depth.coin == row['coin']) & (data_depth.price ==  row['price']))
+                filter_depth_cod = ((data_depth.coin == row['coin']) & (data_depth.price ==  row['price']))
                 percentage_to_density = -(float(data_price.loc[(data_price.coin == row['coin'])].values[0][1]) / float(row['price']) - 1)
                 if abs(percentage_to_density) <= cf_distance and (float(row['quantity']) * float(row['price'])) > limit and row['dt'] < datetime.now() - delta:
                     if datetime.now() - time_resend > row['dt_resend'] and row['in_range'] != 1:
-                        data_depth.dt_resend.where(~(filter_depth), other=datetime.now(), inplace=True) 
-                        data_depth.in_range.where(~(filter_depth), other=1, inplace=True) 
+                        data_depth.loc[filter_depth_cod, 'dt'] = datetime.now() 
+                        data_depth.loc[filter_depth_cod, 'in_range'] = 1  
                         # print(f"\n\nCoin: {row['coin']}\nPrice: {row['price']}\nQuantity: {row['quantity']}\nAmount: {round(float(row['quantity']) * float(row['price']), 2)}$\nPercentage to density: {round(percentage_to_density*100, 2)}%\nDate of discovery: {row['dt']}")
                         send_telegram(row, percentage_to_density)
                         logger.info(f'{str(row)} {str(percentage_to_density)})')
                 else: 
-                    data_depth.in_range.where(~(filter_depth), other=0, inplace=True) 
+                    data_depth.loc[filter_depth_cod, 'in_range'] = 0 
+            time.sleep(0.2)
         except Exception as e:
             logger.error(e)
             time.sleep(10)
@@ -170,9 +171,9 @@ def start_handler(message):
 @bot.message_handler(commands=['check'])
 def start_handler(message):
     global data_depth, data_price
-    filter_depth = ((data_depth.in_range ==  1))
-    if len(data_depth.loc[filter_depth]) == 0:
-        logger.debug(f"User №{message.chat.id} send No records)")
+    filter_depth_check = ((data_depth.in_range ==  1))
+    if len(data_depth.loc[filter_depth_check]) == 0:
+        logger.info(f"User №{message.chat.id} send No records)")
         bot.send_message(message.chat.id, 'No records')
     else:
         all_verified_record = ''
@@ -180,7 +181,7 @@ def start_handler(message):
             if row['in_range'] == 1:
                 percentage_to_density = -((float(data_price.loc[(data_price.coin == row['coin'])].values[0][1]) / float(row['price'])) - 1)
                 all_verified_record += f"Coin: {row['coin']}\nPrice: {row['price']}\nQuantity: {row['quantity']}\nAmount: {round(float(row['price']) * float(row['quantity']), 2)}$\nPercentage to density: {round(percentage_to_density*100, 2)}%\nDate of discovery: {row['dt']}\n\n"
-        logger.debug(f"User №{message.chat.id} send all_verified_record")
+        logger.info(f"User №{message.chat.id} send all_verified_record")
         bot.send_message(message.chat.id, all_verified_record)
         
 
@@ -199,13 +200,16 @@ delta, time_resend, limit, cf_update, cf_distance = import_cfg()
 data_depth = pd.DataFrame(columns=['coin', 'price', 'quantity', 'dt', 'dt_resend', 'in_range'])
 data_price = pd.DataFrame(columns=['coin', 'price'])
 list_coin = get_list_coins()
-
 ubwa = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.com")
-ubwa.create_stream(['depth', 'aggTrade'], list_coin)
-print('Successful connection')
+
+def connect_ws():
+    global ubwa, list_coin
+    ubwa.create_stream(['depth', 'aggTrade'], list_coin)
+    print('Successful connection')
 
 def main():
     get_first_data()
+    connect_ws()
     Thread(target=get_depth_from_websocket).start()
     Thread(target=check_old_data).start()
     Thread(target=polling).start()
