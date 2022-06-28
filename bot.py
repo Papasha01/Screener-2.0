@@ -32,7 +32,8 @@ def import_cfg():
         limit = float(config["Settings"]["limit"])
         cf_update = float(config["Settings"]["cf_update"])
         cf_distance = float(config["Settings"]["cf_distance"])
-        return delta, time_resend, limit, cf_update, cf_distance
+        bot_token = str(config["Settings"]["bot_token"])
+        return delta, time_resend, limit, cf_update, cf_distance, bot_token
     except Exception as e:
         logger.error(f'import config {e}')
         sys.exit()      
@@ -79,7 +80,7 @@ def get_first_data():
         bar_import_coins.next()
         
     bar_import_coins.finish()
-    logger.info("Import Complite")
+    logger.debug("Import Complite")
     return data_depth
 
 
@@ -103,8 +104,6 @@ def get_depth_from_websocket():
             if len(data_depth.loc[filter_check(jsMes, ba)]) != 0:
                 if float(ba[1]) > float(data_depth.loc[filter_check(jsMes, ba)]['quantity']) * cf_update:
                     data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
-                    if float(data_depth.loc[filter_check(jsMes, ba), 'quantity']) < limit:
-                        data_depth.loc[filter_check(jsMes, ba), 'dt'] = datetime.now()
                 else:
                     data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
                     data_depth.loc[filter_check(jsMes, ba), 'dt'] = datetime.now()
@@ -138,7 +137,6 @@ def check_old_data():
     while True:
         try:
             for index, row in data_depth.iterrows():
-                
                 percentage_to_density = -(float(data_price.loc[(data_price.coin == row['coin'])].values[0][1]) / float(row['price']) - 1)
                 if abs(percentage_to_density) <= cf_distance and (float(row['quantity']) * float(row['price'])) > limit and row['dt'] < datetime.now() - delta:
                     if row['dt_resend'] < datetime.now() - time_resend and row['in_range'] != 1:
@@ -154,8 +152,16 @@ def check_old_data():
             time.sleep(10)
             check_old_data()
 
-token = '5276441681:AAHi9DX8ZYWVlm49AEBU1be0gVEXWmeKoZ8'
-bot=telebot.TeleBot(token)
+# bot_token = '5276441681:AAHi9DX8ZYWVlm49AEBU1be0gVEXWmeKoZ8'
+
+# Global variable
+delta, time_resend, limit, cf_update, cf_distance, bot_token = import_cfg()
+data_depth = pd.DataFrame(columns=['coin', 'price', 'quantity', 'dt', 'dt_resend', 'in_range'])
+data_price = pd.DataFrame(columns=['coin', 'price'])
+list_coin = get_list_coins()
+ubwa = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.com")
+
+bot=telebot.TeleBot(bot_token)
 
 # Запуск цикла Telebot
 def polling():
@@ -167,11 +173,11 @@ def polling():
         time.sleep(5)
         polling()
 
-# Взаимодействие с ботом
+
 @bot.message_handler(commands=['start'])
 def start_handler(message):
     bot.send_message(message.chat.id, "I'm working!")
-    logger.debug(f"User №{message.chat.id} send I'm working)")
+    logger.debug(f"User №{message.chat.id} send I'm working")
     if not select_user_id(str(message.chat.id)):
         insert_user_id(str(message.chat.id))
         logger.debug(f'User №{message.chat.id} added to the database)')
@@ -190,7 +196,6 @@ def start_handler(message):
                 all_verified_record += f"Coin: {row['coin']}\nPrice: {row['price']}\nQuantity: {row['quantity']}\nAmount: {round(float(row['price']) * float(row['quantity']), 2)}$\nPercentage to density: {round(percentage_to_density*100, 2)}%\nDate of discovery: {row['dt']}\n\n"
         logger.info(f"User №{message.chat.id} send all_verified_record")
         bot.send_message(message.chat.id, all_verified_record)
-        
 
 # Отправка уведомления в телеграм
 def send_telegram(row, percentage_to_density):
@@ -201,13 +206,6 @@ def send_telegram(row, percentage_to_density):
             except telebot.apihelper.ApiException as e:
                 if e.description == "Forbidden: bot was blocked by the user":
                     print(f"Attention please! The user {user_id[0]} has blocked the bot")
-
-# Global variable
-delta, time_resend, limit, cf_update, cf_distance = import_cfg()
-data_depth = pd.DataFrame(columns=['coin', 'price', 'quantity', 'dt', 'dt_resend', 'in_range'])
-data_price = pd.DataFrame(columns=['coin', 'price'])
-list_coin = get_list_coins()
-ubwa = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.com")
 
 def connect_ws():
     global ubwa, list_coin
