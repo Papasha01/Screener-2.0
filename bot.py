@@ -13,6 +13,9 @@ import telebot
 import pandas as pd
 import sys
 
+pd.options.mode.chained_assignment = None  # default='warn'
+
+
 # Логирование
 logger.add("simple.log")
 logger.info("Start script")
@@ -70,14 +73,21 @@ def get_first_data():
         for ba in depth_dict.values():
             for i in ba:
                 if float(i[0]) * float(i[1]) > limit:
-                    frame_dict = {'coin': row, 'price': i[0], 'quantity': i[1], 'dt': datetime.now(), 'dt_resend': datetime.now(), 'in_range':0}
+                    frame_dict = {'coin': row, 'price': i[0], 'quantity': i[1], 'dt': datetime.now(), 'dt_resend': datetime(1970, 1, 1), 'in_range':0}
                     frame = pd.DataFrame([frame_dict])
                     data_depth = pd.concat([data_depth, frame], ignore_index=True)
         bar_import_coins.next()
         
     bar_import_coins.finish()
-    print('Import Complite')
+    logger.info("Import Complite")
     return data_depth
+
+
+def filte_cod(row):
+    return ((data_depth.coin == row['coin']) & (data_depth.price ==  row['price']))
+
+def filter_check(jsMes, ba):
+    return ((data_depth.coin == jsMes['data']['s']) & (data_depth.price ==  ba[0]))
 
 def get_depth_from_websocket():
     '''
@@ -88,39 +98,38 @@ def get_depth_from_websocket():
     
     def check(ba):
         global data_depth, limit, cf_update
-        filter_depth_ws = ((data_depth.coin == jsMessage['data']['s']) & (data_depth.price ==  ba[0]))
+        
         if float(ba[0]) * float(ba[1]) > limit:
-            if len(data_depth.loc[filter_depth_ws]) != 0:
-                if float(ba[1]) > float(data_depth.loc[filter_depth_ws]['quantity']) * cf_update:
-                    data_depth.loc[filter_depth_ws, 'quantity'] = ba[1]
+            if len(data_depth.loc[filter_check(jsMes, ba)]) != 0:
+                if float(ba[1]) > float(data_depth.loc[filter_check(jsMes, ba)]['quantity']) * cf_update:
+                    data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
+                    if float(data_depth.loc[filter_check(jsMes, ba), 'quantity']) < limit:
+                        data_depth.loc[filter_check(jsMes, ba), 'dt'] = datetime.now()
                 else:
-                    data_depth.loc[filter_depth_ws, 'quantity'] = ba[1] 
-                    data_depth.loc[filter_depth_ws, 'dt'] = datetime.now() 
+                    data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
+                    data_depth.loc[filter_check(jsMes, ba), 'dt'] = datetime.now()
             else:
-                frame_dict = {'coin': jsMessage['data']['s'], 'price': ba[0], 'quantity': ba[1], 'dt': datetime.now(), 'dt_resend': datetime.now(), 'in_range': 0}
+                frame_dict = {'coin': jsMes['data']['s'], 'price': ba[0], 'quantity': ba[1], 'dt': datetime.now(), 'dt_resend': datetime(1970, 1, 1), 'in_range': 0}
                 frame = pd.DataFrame([frame_dict])
                 data_depth = pd.concat([data_depth, frame], ignore_index=True)
-        elif len(data_depth.loc[filter_depth_ws]) != 0:
-            filter_depth_ws = -filter_depth_ws
-            data_depth = data_depth.loc[filter_depth_ws]
+        elif len(data_depth.loc[filter_check(jsMes, ba)]) != 0:
+            data_depth = data_depth.loc[-filter_check(jsMes, ba)]
 
     while True:
         oldest_data_from_stream_buffer = ubwa.pop_stream_data_from_stream_buffer()
         if oldest_data_from_stream_buffer:
-            jsMessage = json.loads(oldest_data_from_stream_buffer)
-            if 'stream' in jsMessage.keys():
-                if jsMessage['data']['e'] == 'depthUpdate':
-                    for bid in jsMessage['data']['b']:
+            jsMes = json.loads(oldest_data_from_stream_buffer)
+            if 'stream' in jsMes.keys():
+                if jsMes['data']['e'] == 'depthUpdate':
+                    for bid in jsMes['data']['b']:
                         check(bid)
-                    for ask in jsMessage['data']['a']:
+                    for ask in jsMes['data']['a']:
                         check(ask)
-                elif jsMessage['data']['e'] == 'aggTrade':
-                    filter_agg = data_price.coin == jsMessage['data']['s']
-                    data_price.loc[filter_agg, 'price'] = jsMessage['data']['p']
+                elif jsMes['data']['e'] == 'aggTrade':
+                    data_price.loc[data_price.coin == jsMes['data']['s'], 'price'] = jsMes['data']['p']
         else: 
             time.sleep(0.1)
             spinner_running.next()
-
 
 def check_old_data():
     '''
@@ -129,17 +138,16 @@ def check_old_data():
     while True:
         try:
             for index, row in data_depth.iterrows():
-                filter_depth_cod = ((data_depth.coin == row['coin']) & (data_depth.price ==  row['price']))
+                
                 percentage_to_density = -(float(data_price.loc[(data_price.coin == row['coin'])].values[0][1]) / float(row['price']) - 1)
                 if abs(percentage_to_density) <= cf_distance and (float(row['quantity']) * float(row['price'])) > limit and row['dt'] < datetime.now() - delta:
-                    if datetime.now() - time_resend > row['dt_resend'] and row['in_range'] != 1:
-                        data_depth.loc[filter_depth_cod, 'dt'] = datetime.now() 
-                        data_depth.loc[filter_depth_cod, 'in_range'] = 1  
-                        # print(f"\n\nCoin: {row['coin']}\nPrice: {row['price']}\nQuantity: {row['quantity']}\nAmount: {round(float(row['quantity']) * float(row['price']), 2)}$\nPercentage to density: {round(percentage_to_density*100, 2)}%\nDate of discovery: {row['dt']}")
+                    if row['dt_resend'] < datetime.now() - time_resend and row['in_range'] != 1:
+                        data_depth.loc[filte_cod(row), 'dt_resend'] = datetime.now() 
+                        data_depth.loc[filte_cod(row), 'in_range'] = 1  
                         send_telegram(row, percentage_to_density)
                         logger.info(f'{str(row)} {str(percentage_to_density)})')
                 else: 
-                    data_depth.loc[filter_depth_cod, 'in_range'] = 0 
+                    data_depth.loc[filte_cod(row), 'in_range'] = 0
             time.sleep(0.2)
         except Exception as e:
             logger.error(e)
@@ -171,9 +179,8 @@ def start_handler(message):
 @bot.message_handler(commands=['check'])
 def start_handler(message):
     global data_depth, data_price
-    filter_depth_check = ((data_depth.in_range ==  1))
-    if len(data_depth.loc[filter_depth_check]) == 0:
-        logger.info(f"User №{message.chat.id} send No records)")
+    if len(data_depth.loc[data_depth.in_range ==  1]) == 0:
+        logger.info(f"User №{message.chat.id} send No records")
         bot.send_message(message.chat.id, 'No records')
     else:
         all_verified_record = ''
