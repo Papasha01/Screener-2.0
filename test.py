@@ -1,26 +1,14 @@
-from random import random
-from threading import Thread
-import pandas as pd 
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
-df1 = pd.DataFrame([[1,'Bob', 'Builder'],
-                  [2,'Sally', 'Baker'],
-                  [3,'Scott', 'Candle Stick Maker']], 
-columns=['id','name', 'occupation'])
+class MyHandler(FileSystemEventHandler):
+    def on_any_event(self, event):
+        print(event.event_type, event.src_path)
 
-df2 = pd.DataFrame([[1,'Bob', 'Builder'],
-                  [2,'Sally', 'Baker'],
-                  [3,'Scott', 'Candle Stick Maker']], 
-columns=['id','name', 'occupation'])
+event_handler = MyHandler()
+observer = Observer()
+observer.schedule(event_handler, path='./', recursive=False)
+observer.start()
 
-def q1():
-    while True:
-        filter = df1.id < 1
-        df1.loc[filter, 'id'] = random()
-
-def q2():
-    while True:
-        filter = df2.id < 1
-        df2.loc[filter, 'id'] = random()
-
-Thread(target=q1).start()
-Thread(target=q2).start()
+while True:
+    pass

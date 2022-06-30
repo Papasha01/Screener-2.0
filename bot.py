@@ -1,4 +1,6 @@
 from db_req import select_user_id, select_all_user_id, insert_user_id
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 from datetime import date, datetime, timedelta
 from binance.spot import Spot as Client
 import unicorn_binance_websocket_api
@@ -13,8 +15,8 @@ import telebot
 import pandas as pd
 import sys
 
-pd.options.mode.chained_assignment = None  # default='warn'
-
+# Отключение предупреждений
+pd.options.mode.chained_assignment = None
 
 # Логирование
 logger.add("simple.log")
@@ -30,13 +32,12 @@ def import_cfg():
         delta = timedelta(minutes = float(config["Settings"]["delta"]))
         time_resend = timedelta(minutes = float(config["Settings"]["time_resend"]))
         limit = float(config["Settings"]["limit"])
-        cf_update = float(config["Settings"]["cf_update"])
         cf_distance = float(config["Settings"]["cf_distance"])
         bot_token = str(config["Settings"]["bot_token"])
-        return delta, time_resend, limit, cf_update, cf_distance, bot_token
+        return delta, time_resend, limit, cf_distance, bot_token
     except Exception as e:
         logger.error(f'import config {e}')
-        sys.exit()      
+        sys.exit(1)      
 
 def get_list_coins():
     '''
@@ -56,7 +57,6 @@ def get_first_data():
     '''
     Первое получение данных
     '''
-
     global data_depth, data_price, limit, list_coin
     bar_import_coins = Bar('Importing Coins', max = len(list_coin))
 
@@ -83,10 +83,11 @@ def get_first_data():
     logger.debug("Import Complite")
     return data_depth
 
-
+# Функция фильтрации плотностей
 def filte_cod(row):
     return ((data_depth.coin == row['coin']) & (data_depth.price ==  row['price']))
 
+# Функция фильтрации плотностей
 def filter_check(jsMes, ba):
     return ((data_depth.coin == jsMes['data']['s']) & (data_depth.price ==  ba[0]))
 
@@ -98,15 +99,11 @@ def get_depth_from_websocket():
     spinner_running = Spinner('Checking ')
     
     def check(ba):
-        global data_depth, limit, cf_update
+        global data_depth, limit
         
         if float(ba[0]) * float(ba[1]) > limit:
             if len(data_depth.loc[filter_check(jsMes, ba)]) != 0:
-                if float(ba[1]) > float(data_depth.loc[filter_check(jsMes, ba)]['quantity']) * cf_update:
-                    data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
-                else:
-                    data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
-                    data_depth.loc[filter_check(jsMes, ba), 'dt'] = datetime.now()
+                data_depth.loc[filter_check(jsMes, ba), 'quantity'] = ba[1]
             else:
                 frame_dict = {'coin': jsMes['data']['s'], 'price': ba[0], 'quantity': ba[1], 'dt': datetime.now(), 'dt_resend': datetime(1970, 1, 1), 'in_range': 0}
                 frame = pd.DataFrame([frame_dict])
@@ -138,7 +135,7 @@ def check_old_data():
         try:
             for index, row in data_depth.iterrows():
                 percentage_to_density = -(float(data_price.loc[(data_price.coin == row['coin'])].values[0][1]) / float(row['price']) - 1)
-                if abs(percentage_to_density) <= cf_distance and (float(row['quantity']) * float(row['price'])) > limit and row['dt'] < datetime.now() - delta:
+                if abs(percentage_to_density) <= cf_distance and row['dt'] < datetime.now() - delta:
                     if row['dt_resend'] < datetime.now() - time_resend and row['in_range'] != 1:
                         data_depth.loc[filte_cod(row), 'dt_resend'] = datetime.now() 
                         data_depth.loc[filte_cod(row), 'in_range'] = 1  
@@ -152,16 +149,27 @@ def check_old_data():
             time.sleep(10)
             check_old_data()
 
-# bot_token = '5276441681:AAHi9DX8ZYWVlm49AEBU1be0gVEXWmeKoZ8'
+# Класс проверки изменения файла конфигурации
+class MyHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        global delta, time_resend, limit, cf_distance, bot_token
+        if event.src_path == './cfg.ini':
+            delta, time_resend, limit, cf_distance, bot_token = import_cfg()
+            get_first_data()
 
 # Global variable
-delta, time_resend, limit, cf_update, cf_distance, bot_token = import_cfg()
+delta, time_resend, limit, cf_distance, bot_token = import_cfg()
 data_depth = pd.DataFrame(columns=['coin', 'price', 'quantity', 'dt', 'dt_resend', 'in_range'])
 data_price = pd.DataFrame(columns=['coin', 'price'])
 list_coin = get_list_coins()
 ubwa = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.com")
-
 bot=telebot.TeleBot(bot_token)
+
+# Запуск потока проверки файла конфигурации
+event_handler = MyHandler()
+observer = Observer()
+observer.schedule(event_handler, path='./', recursive=False)
+observer.start()
 
 # Запуск цикла Telebot
 def polling():
@@ -173,7 +181,7 @@ def polling():
         time.sleep(5)
         polling()
 
-
+# Обработка команды /start
 @bot.message_handler(commands=['start'])
 def start_handler(message):
     bot.send_message(message.chat.id, "I'm working!")
@@ -182,6 +190,7 @@ def start_handler(message):
         insert_user_id(str(message.chat.id))
         logger.debug(f'User №{message.chat.id} added to the database)')
 
+# Обработка команды /check
 @bot.message_handler(commands=['check'])
 def start_handler(message):
     global data_depth, data_price
@@ -207,6 +216,7 @@ def send_telegram(row, percentage_to_density):
                 if e.description == "Forbidden: bot was blocked by the user":
                     print(f"Attention please! The user {user_id[0]} has blocked the bot")
 
+# Подключение к вебсокету
 def connect_ws():
     global ubwa, list_coin
     ubwa.create_stream(['depth', 'aggTrade'], list_coin)
