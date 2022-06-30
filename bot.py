@@ -1,6 +1,4 @@
 from db_req import select_user_id, select_all_user_id, insert_user_id
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 from datetime import date, datetime, timedelta
 from binance.spot import Spot as Client
 import unicorn_binance_websocket_api
@@ -22,10 +20,8 @@ pd.options.mode.chained_assignment = None
 logger.add("simple.log")
 logger.info("Start script")
 
+# Импорт файла конфигурации
 def import_cfg():
-    '''
-    Импорт файла конфигурации
-    '''
     try:
         config = configparser.ConfigParser()                          # создаём объекта парсера
         config.read("cfg.ini")                                        # читаем конфиг
@@ -39,10 +35,8 @@ def import_cfg():
         logger.error(f'import config {e}')
         sys.exit(1)      
 
+# Парсинг файла с монетами в массив
 def get_list_coins():
-    '''
-    Парсинг файла с монетами в массив
-    '''
     try:
         list_coin = []
         coins = open('coins.txt')
@@ -53,10 +47,8 @@ def get_list_coins():
         logger.error(e)
         sys.exit()
 
+# Первое получение данных
 def get_first_data():
-    '''
-    Первое получение данных
-    '''
     global data_depth, data_price, limit, list_coin
     bar_import_coins = Bar('Importing Coins', max = len(list_coin))
 
@@ -91,10 +83,8 @@ def filte_cod(row):
 def filter_check(jsMes, ba):
     return ((data_depth.coin == jsMes['data']['s']) & (data_depth.price ==  ba[0]))
 
+# Получение данных с websocket
 def get_depth_from_websocket():
-    '''
-    Получение данных с websocket
-    '''
     global data_depth, data_price, ubwa
     spinner_running = Spinner('Checking ')
     
@@ -127,10 +117,9 @@ def get_depth_from_websocket():
             time.sleep(0.1)
             spinner_running.next()
 
+# Проверка данных, отправка уведомлений
 def check_old_data():
-    '''
-    Проверка данных, отправка уведомлений
-    '''
+    global data_depth, data_price
     while True:
         try:
             for index, row in data_depth.iterrows():
@@ -149,29 +138,23 @@ def check_old_data():
             time.sleep(10)
             check_old_data()
 
-# Класс проверки изменения файла конфигурации
-class MyHandler(FileSystemEventHandler):
-    def on_modified(self, event):
-        global delta, time_resend, limit, cf_distance, bot_token
-        if event.src_path == './cfg.ini':
-            delta, time_resend, limit, cf_distance, bot_token = import_cfg()
-            get_first_data()
-
 # Global variable
-delta, time_resend, limit, cf_distance, bot_token = import_cfg()
 data_depth = pd.DataFrame(columns=['coin', 'price', 'quantity', 'dt', 'dt_resend', 'in_range'])
 data_price = pd.DataFrame(columns=['coin', 'price'])
-list_coin = get_list_coins()
 ubwa = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.com")
-bot=telebot.TeleBot(bot_token)
 
-# Запуск потока проверки файла конфигурации
-event_handler = MyHandler()
-observer = Observer()
-observer.schedule(event_handler, path='./', recursive=False)
-observer.start()
+# Подключение к вебсокету
+def connect_ws():
+    global ubwa, list_coin
+    ubwa.create_stream(['depth', 'aggTrade'], list_coin)
+    print('Successful connection')
+
+# Импорт файла конфигурации
+delta, time_resend, limit, cf_distance, bot_token = import_cfg()
 
 # Запуск цикла Telebot
+bot=telebot.TeleBot(bot_token)
+
 def polling():
     time.sleep(5)
     try: 
@@ -216,13 +199,9 @@ def send_telegram(row, percentage_to_density):
                 if e.description == "Forbidden: bot was blocked by the user":
                     print(f"Attention please! The user {user_id[0]} has blocked the bot")
 
-# Подключение к вебсокету
-def connect_ws():
-    global ubwa, list_coin
-    ubwa.create_stream(['depth', 'aggTrade'], list_coin)
-    print('Successful connection')
-
 def main():
+    global list_coin
+    list_coin = get_list_coins()
     get_first_data()
     connect_ws()
     Thread(target=get_depth_from_websocket).start()
@@ -232,3 +211,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
