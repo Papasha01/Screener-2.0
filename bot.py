@@ -125,9 +125,9 @@ def check_old_data():
             for index, row in data_depth.iterrows():
                 percentage_to_density = -(float(data_price.loc[(data_price.coin == row['coin'])].values[0][1]) / float(row['price']) - 1)
                 if abs(percentage_to_density) <= cf_distance and row['dt'] < datetime.now() - delta:
+                    data_depth.loc[filte_cod(row), 'in_range'] = 1  
                     if row['dt_resend'] < datetime.now() - time_resend and row['in_range'] != 1:
                         data_depth.loc[filte_cod(row), 'dt_resend'] = datetime.now() 
-                        data_depth.loc[filte_cod(row), 'in_range'] = 1  
                         send_telegram(row, percentage_to_density)
                         logger.info(f'{str(row)} {str(percentage_to_density)})')
                 else: 
@@ -202,14 +202,11 @@ def send_telegram(row, percentage_to_density):
 def main():
     global list_coin
     list_coin = get_list_coins()
-    get_first_data()
     connect_ws()
     Thread(target=get_depth_from_websocket).start()
+    get_first_data()
     Thread(target=check_old_data).start()
     Thread(target=polling).start()
 
-
 if __name__ == '__main__':
     main()
-
-

@@ -1,14 +1,16 @@
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+# from binance.client import Client
 
-class MyHandler(FileSystemEventHandler):
-    def on_any_event(self, event):
-        print(event.event_type, event.src_path)
+# api_key = "xxx"
+# api_secret = "xxx"
 
-event_handler = MyHandler()
-observer = Observer()
-observer.schedule(event_handler, path='./', recursive=False)
-observer.start()
+# client = Client(api_key, api_secret)
+# exchange_info = client.get_exchange_info()
+# with open('coins.txt', 'a+') as f:
+#     for s in exchange_info['symbols']:
+#         f.write(s['symbol'] + '\n') 
 
-while True:
-    pass
+with open('coins.txt', 'r') as f:
+    with open('YES.txt', 'a+') as y:
+        for s in f:
+            if 'USDT' in s:
+                y.write(s)
